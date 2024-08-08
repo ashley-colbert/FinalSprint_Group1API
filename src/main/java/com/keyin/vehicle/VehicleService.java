@@ -1,11 +1,14 @@
-package com.keyin.classes.vehicle;
+package com.keyin.vehicle;
 
-import com.keyin.classes.agency.Agency;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.rental.Rental;
+import com.keyin.agency.Agency;
+import com.keyin.agency.AgencyRepository;
+import com.keyin.location.Location;
+import com.keyin.rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -151,9 +154,9 @@ public final class VehicleService {
      * @route   GET /api/vehicles/{rental}
      * @access  private
      */
-    public Vehicle getByRental(Rental rental) {
-        return repo.findByRental(rental);
-    }
+//    public Vehicle getByRental(Rental rental) {
+//        return repo.findByRental(rental);
+//    }
     /**
      * @name    getRented
      * @desc    Get all currently rented vehicles
@@ -407,4 +410,39 @@ public final class VehicleService {
 //        current.setActive(false);
 //        return repo.save(current);
 //    }
+
+    public List<Vehicle> searchVehicles(VehicleSearchCriteria criteria) {
+        String category = criteria.getCategory();
+        Long agency_pk = criteria.getAgencyPk(); // Change to Long
+        String manufacturer = criteria.getManufacturer();
+        String model = criteria.getModel();
+
+        if (manufacturer != null && !manufacturer.isEmpty() && model != null && !model.isEmpty()) {
+            return repo.findByCategoryAndAgencyPkAndManufacturerAndModel(
+                    category, agency_pk, manufacturer, model);
+        } else if (manufacturer != null && !manufacturer.isEmpty()) {
+            return repo.findByCategoryAndAgencyPkAndManufacturer(
+                    category, agency_pk, manufacturer);
+        } else if (model != null && !model.isEmpty()) {
+            return repo.findByCategoryAndAgencyPkAndModel(
+                    category, agency_pk, model);
+        } else {
+            return repo.findByCategoryAndAgencyPk(category, agency_pk);
+        }
+    }
+
+//    public List<Vehicle> findVehicleByAgencyAndCategory(Agency agency, String category) {
+//        return repo.findByAgencyAndCategory(agency, category);
+//    }
+    @Autowired
+    private AgencyRepository agencyRepo;
+
+    public List<Vehicle> findVehicleByAgencyAndCategory(Long pk, String category) {
+        Agency agency = agencyRepo.findByPk(pk);
+        if (agency != null) {
+            return repo.findByAgencyAndCategory(agency, category);
+        }
+        return Collections.emptyList(); // Return empty list if agency not found
+    }
 }
+

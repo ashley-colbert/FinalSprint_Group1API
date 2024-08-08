@@ -1,7 +1,7 @@
-package com.keyin.classes.address;
+package com.keyin.address;
 
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,10 +44,10 @@ public final class AddressController {
     public List<Address> getByCategory(@PathVariable String category) {
         return service.getByCategory(category);
     }
-    @GetMapping("/api/addresses/{contact}")
-    public List<Address> getByContact(@PathVariable Contact contact) {
-        return service.getByContact(contact);
-    }
+//    @GetMapping("/api/addresses/{contact}")
+//    public List<Address> getByContact(@PathVariable Contact contact) {
+//        return service.getByContact(contact);
+//    }
     @GetMapping("/api/addresses/{location}")
     public Address getByLocation(@PathVariable Location location) {
         return service.getByLocation(location);

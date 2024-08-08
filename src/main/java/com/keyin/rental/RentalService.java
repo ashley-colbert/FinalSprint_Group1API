@@ -1,10 +1,10 @@
-package com.keyin.classes.rental;
+package com.keyin.rental;
 
-import com.keyin.classes.agency.Agency;
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.vehicle.Vehicle;
-import com.keyin.classes.vehicle.VehicleRepository;
+import com.keyin.agency.Agency;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
+import com.keyin.vehicle.Vehicle;
+import com.keyin.vehicle.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

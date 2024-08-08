@@ -1,8 +1,8 @@
-package com.keyin.classes.agency;
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.rental.Rental;
-import com.keyin.classes.vehicle.Vehicle;
+package com.keyin.agency;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
+import com.keyin.rental.Rental;
+import com.keyin.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -31,22 +31,22 @@ public final class AgencyController {
     public Agency getByWebsite(@PathVariable String website) {
         return service.getByWebsite(website);
     }
-    @GetMapping("/api/agencies/{location}")
-    public Agency getByLocation(@PathVariable Location location) {
-        return service.getByLocation(location);
-    }
-    @GetMapping("/api/agencies/{contact}")
-    public Agency getByContact(@PathVariable Contact contact) {
-        return service.getByContact(contact);
-    }
-    @GetMapping("/api/agencies/{vehicle}")
-    public Agency getByVehicle(@PathVariable Vehicle vehicle) {
-        return service.getByVehicle(vehicle);
-    }
-    @GetMapping("/api/agencies/{rental}")
-    public Agency getByRental(@PathVariable Rental rental) {
-        return service.getByRental(rental);
-    }
+//    @GetMapping("/api/agencies/{location}")
+//    public Agency getByLocation(@PathVariable Location location) {
+//        return service.getByLocation(location);
+//    }
+//    @GetMapping("/api/agencies/{contact}")
+//    public Agency getByContact(@PathVariable Contact contact) {
+//        return service.getByContact(contact);
+//    }
+//    @GetMapping("/api/agencies/{vehicle}")
+//    public Agency getByVehicle(@PathVariable Vehicle vehicle) {
+//        return service.getByVehicle(vehicle);
+//    }
+//    @GetMapping("/api/agencies/{rental}")
+//    public Agency getByRental(@PathVariable Rental rental) {
+//        return service.getByRental(rental);
+//    }
     @GetMapping("/api/agencies/active")
     public List<Agency> getActive() {
         return service.getActive();

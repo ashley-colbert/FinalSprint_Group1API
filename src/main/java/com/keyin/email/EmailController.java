@@ -1,6 +1,6 @@
-package com.keyin.classes.email;
-import com.keyin.classes.address.Address;
-import com.keyin.classes.contact.Contact;
+package com.keyin.email;
+import com.keyin.address.Address;
+import com.keyin.contact.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

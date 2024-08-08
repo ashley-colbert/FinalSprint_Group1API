@@ -1,8 +1,8 @@
-package com.keyin.classes.contact;
-import com.keyin.classes.address.Address;
-import com.keyin.classes.email.Email;
-import com.keyin.classes.phone.Phone;
-import com.keyin.classes.rental.Rental;
+package com.keyin.contact;
+import com.keyin.address.Address;
+import com.keyin.email.Email;
+import com.keyin.phone.Phone;
+import com.keyin.rental.Rental;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
@@ -10,11 +10,13 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "contacts")
 public class Contact {
 
     @Id
     @SequenceGenerator(name = "contact_sequence", sequenceName = "contact_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "contact_sequence")
+    private long pk;
     private String first;
     private String last;
     private String role;
@@ -31,6 +33,7 @@ public class Contact {
     @Nullable
     @OneToMany
     private List<Rental> rentals;
+    private boolean active;
 
     public Contact(
             String first,
@@ -48,6 +51,23 @@ public class Contact {
         this.phones = phones;
         this.emails = emails;
     }
+
+    public long getPk() {
+        return pk;
+    }
+
+    public void setPk(long pk) {
+        this.pk = pk;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public Contact() {
         super();
     }

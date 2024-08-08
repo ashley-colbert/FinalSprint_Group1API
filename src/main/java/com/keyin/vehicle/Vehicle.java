@@ -1,14 +1,13 @@
-package com.keyin.classes.vehicle;
-
-import com.keyin.classes.agency.Agency;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.rental.Rental;
+package com.keyin.vehicle;
+import com.keyin.agency.Agency;
+import com.keyin.location.Location;
+import com.keyin.rental.Rental;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
+@Table(name = "vehicles")
 public class Vehicle {
     @Id
     @SequenceGenerator(name = "vehicle_sequence", sequenceName = "vehicle_sequence", allocationSize = 1, initialValue=1)
@@ -34,6 +33,7 @@ public class Vehicle {
     @OneToMany
     private List<Rental> rentals;
     private boolean rented;
+    private boolean active;
     public Vehicle(
             String manufacturer,
             String model,
@@ -92,6 +92,15 @@ public class Vehicle {
         super();
         this.rented = false;
     }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }

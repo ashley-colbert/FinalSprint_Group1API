@@ -1,17 +1,17 @@
-package com.keyin.classes.phone;
-
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
+package com.keyin.phone;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
+@Table(name = "phones")
 public class Phone {
     @Id
     @SequenceGenerator(name = "phone_sequence", sequenceName = "phone_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "phone_sequence")
+    private long pk;
     private String number;
     @Nullable
     @ManyToMany
@@ -20,6 +20,8 @@ public class Phone {
     @OneToOne
     private Location location;
     private String category;
+    private boolean active;
+
     public Phone(
             String number,
             List<Contact> contacts,
@@ -43,6 +45,23 @@ public class Phone {
     public Phone() {
         super();
     }
+
+    public long getPk() {
+        return pk;
+    }
+
+    public void setPk(long pk) {
+        this.pk = pk;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public String getNumber() {
         return number;
     }

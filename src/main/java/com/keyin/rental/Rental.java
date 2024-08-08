@@ -1,19 +1,19 @@
-package com.keyin.classes.rental;
-
-import com.keyin.classes.agency.Agency;
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.vehicle.Vehicle;
+package com.keyin.rental;
+import com.keyin.agency.Agency;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
+import com.keyin.vehicle.Vehicle;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-
 import java.time.ZonedDateTime;
 
 @Entity
+@Table(name = "rentals")
 public class Rental {
     @Id
     @SequenceGenerator(name = "rental_sequence", sequenceName = "rental_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "rental_sequence")
+    private long pk;
     @ManyToOne
     private Vehicle vehicle;
     @ManyToOne
@@ -30,6 +30,8 @@ public class Rental {
     @Nullable
     @ManyToOne
     private Location returnedTo;
+    private boolean active;
+
     public Rental(
             Vehicle vehicle,
             Contact contact,
@@ -51,6 +53,23 @@ public class Rental {
     public Rental() {
         super();
     }
+
+    public long getPk() {
+        return pk;
+    }
+
+    public void setPk(long pk) {
+        this.pk = pk;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }

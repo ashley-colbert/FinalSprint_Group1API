@@ -1,9 +1,9 @@
-package com.keyin.classes.rental;
+package com.keyin.rental;
 
-import com.keyin.classes.agency.Agency;
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.vehicle.Vehicle;
+import com.keyin.agency.Agency;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
+import com.keyin.vehicle.Vehicle;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -23,6 +23,6 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
     List<Rental> findAllByReturnedOn(ZonedDateTime returnedOn);
     List<Rental> findAllByReturnedTo(Location returnedTo);
     List<Rental> findAllByActive(boolean active);
-    @Query("SELECT r FROM RentalEntity r WHERE r.due < CURRENT_TIMESTAMP")
+    @Query("SELECT r FROM Rental r WHERE r.due < CURRENT_TIMESTAMP")
     List<Rental> findAllOverdue();
 }
