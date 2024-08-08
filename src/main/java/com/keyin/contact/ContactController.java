@@ -1,9 +1,9 @@
-package com.keyin.classes.contact;
+package com.keyin.contact;
 
-import com.keyin.classes.address.Address;
-import com.keyin.classes.email.Email;
-import com.keyin.classes.phone.Phone;
-import com.keyin.classes.rental.Rental;
+import com.keyin.address.Address;
+import com.keyin.email.Email;
+import com.keyin.phone.Phone;
+import com.keyin.rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,22 +38,22 @@ public final class ContactController {
     public List<Contact> getByRole(@PathVariable String role) {
         return service.getByRole(role);
     }
-    @GetMapping("/api/contacts/{address}")
-    public List<Contact> getByAddress(@PathVariable Address address) {
-        return service.getByAddress(address);
-    }
-    @GetMapping("/api/contacts/{phone}")
-    public List<Contact> getByPhone(@PathVariable Phone phone) {
-        return service.getByPhone(phone);
-    }
-    @GetMapping("/api/contacts/{email}")
-    public Contact getByEmail(@PathVariable Email email) {
-        return service.getByEmail(email);
-    }
-    @GetMapping("/api/contacts/{rental}")
-    public Contact getByRental(@PathVariable Rental rental) {
-        return service.getByRental(rental);
-    }
+    //    @GetMapping("/api/contacts/{address}")
+//    public List<Contact> getByAddress(@PathVariable Address address) {
+//        return service.getByAddress(address);
+//    }
+//    @GetMapping("/api/contacts/{phone}")
+//    public List<Contact> getByPhone(@PathVariable Phone phone) {
+//        return service.getByPhone(phone);
+//    }
+//    @GetMapping("/api/contacts/{email}")
+//    public Contact getByEmail(@PathVariable Email email) {
+//        return service.getByEmail(email);
+//    }
+//    @GetMapping("/api/contacts/{rental}")
+//    public Contact getByRental(@PathVariable Rental rental) {
+//        return service.getByRental(rental);
+//    }
     @GetMapping("/api/contacts/{active}")
     public List<Contact> getActive() {
         return service.getActive();
@@ -134,13 +134,13 @@ public final class ContactController {
     ) {
         return service.addPhone(pk, phone);
     }
-    @PostMapping("/api/contacts/{pk}")
-    public Contact addPhones(
-            @PathVariable long pk,
-            @RequestBody List<Phone> phones
-    ) {
-        return service.addPhones(pk, phones);
-    }
+    //    @PostMapping("/api/contacts/{pk}")
+//    public Contact addPhones(
+//            @PathVariable long pk,
+//            @RequestBody List<Phone> phones
+//    ) {
+//        return service.addPhones(pk, phones);
+//    }
     @PatchMapping("/api/contacts/{pk}/phones/{index}")
     public Contact replacePhone(
             @PathVariable long pk,

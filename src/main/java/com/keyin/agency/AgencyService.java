@@ -1,9 +1,9 @@
-package com.keyin.classes.agency;
+package com.keyin.agency;
 
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.rental.Rental;
-import com.keyin.classes.vehicle.Vehicle;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
+import com.keyin.rental.Rental;
+import com.keyin.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,36 +62,36 @@ public final class AgencyService {
      * @route   GET /api/agencies/{location}
      * @access  private
      */
-    public Agency getByLocation(Location location) {
-        return repo.findByLocation(location);
-    }
+//    public Agency getByLocation(Location location) {
+//        return repo.findByLocation(location);
+//    }
     /**
      * @name    getByContact
      * @desc    Get the agency that employs the given contact
      * @route   GET /api/agencies/{contact}
      * @access  private
      */
-    public Agency getByContact(Contact contact) {
-        return repo.findByContact(contact);
-    }
+//    public Agency getByContact(Contact contact) {
+//        return repo.findByContact(contact);
+//    }
     /**
      * @name    getByVehicle
      * @desc    Get the agency that owns the given vehicle
      * @route   GET /api/agencies/{vehicle}
      * @access  private
      */
-    public Agency getByVehicle(Vehicle vehicle) {
-        return repo.findByVehicle(vehicle);
-    }
+//    public Agency getByVehicle(Vehicle vehicle) {
+//        return repo.findByVehicle(vehicle);
+//    }
     /**
      * @name    getByRental
      * @desc    Get the agency that the given vehicle was rented from
      * @route   GET /api/agencies/{rental}
      * @access  private
      */
-    public Agency getByRental(Rental rental) {
-        return repo.findByRental(rental);
-    }
+//    public Agency getByRental(Rental rental) {
+//        return repo.findByRental(rental);
+//    }
     /**
      * @name    getActive
      * @desc    Get all active agencies

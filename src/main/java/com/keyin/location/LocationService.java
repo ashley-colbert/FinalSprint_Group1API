@@ -1,10 +1,10 @@
-package com.keyin.classes.location;
+package com.keyin.location;
 
-import com.keyin.classes.address.Address;
-import com.keyin.classes.agency.Agency;
-import com.keyin.classes.phone.Phone;
-import com.keyin.classes.rental.Rental;
-import com.keyin.classes.vehicle.Vehicle;
+import com.keyin.address.Address;
+import com.keyin.agency.Agency;
+import com.keyin.phone.Phone;
+import com.keyin.rental.Rental;
+import com.keyin.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,18 +72,18 @@ public final class LocationService {
      * @route   GET /api/locations/{vehicle}
      * @access  private
      */
-    public Location getByVehicle(Vehicle vehicle) {
-        return repo.findByVehicle(vehicle);
-    }
+//    public Location getByVehicle(Vehicle vehicle) {
+//        return repo.findByVehicle(vehicle);
+//    }
     /**
      * @name    getByRental
      * @desc    Get the location that a vehicle was rented from
      * @route   GET /api/locations/{rental}
      * @access  private
      */
-    public List<Location> getByRental(Rental rental) {
-        return repo.findAllByRental(rental);
-    }
+//    public List<Location> getByRental(Rental rental) {
+//        return repo.findAllByRental(rental);
+//    }
     /**
      * @name    getByHours
      * @desc    Get all locations with the given hours

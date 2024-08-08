@@ -1,7 +1,7 @@
-package com.keyin.classes.address;
+package com.keyin.address;
 
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -89,9 +89,9 @@ public final class AddressService {
      * @route   GET /api/addresses/{contact}
      * @access  private
      */
-    public List<Address> getByContact(Contact contact) {
-        return repo.findAllByContact(contact);
-    }
+//    public List<Address> getByContact(Contact contact) {
+//        return repo.findAllByContact(contact);
+//    }
     /**
      * @name    getByLocation
      * @desc    Get the address of an agency location

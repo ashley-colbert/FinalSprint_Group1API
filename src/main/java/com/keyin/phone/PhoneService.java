@@ -1,7 +1,7 @@
-package com.keyin.classes.phone;
+package com.keyin.phone;
 
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,9 +57,9 @@ public final class PhoneService {
      * @route GET /api/phones/{contact}
      * @access private
      */
-    public List<Phone> getByContact(Contact contact) {
-        return repo.findAllByContact(contact);
-    }
+//    public List<Phone> getByContact(Contact contact) {
+//        return repo.findAllByContact(contact);
+//    }
 
     /**
      * @name getByCategory

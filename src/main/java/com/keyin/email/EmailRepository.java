@@ -1,5 +1,5 @@
-package com.keyin.classes.email;
-import com.keyin.classes.contact.Contact;
+package com.keyin.email;
+import com.keyin.contact.Contact;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

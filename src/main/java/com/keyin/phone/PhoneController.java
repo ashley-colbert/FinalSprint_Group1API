@@ -1,6 +1,6 @@
-package com.keyin.classes.phone;
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
+package com.keyin.phone;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -25,10 +25,10 @@ public final class PhoneController {
     public Phone getByNumber(@PathVariable String number) {
         return service.getByNumber(number);
     }
-    @GetMapping("/api/phones/{contact}")
-    public List<Phone> getByContact(@PathVariable Contact contact) {
-        return service.getByContact(contact);
-    }
+//    @GetMapping("/api/phones/{contact}")
+//    public List<Phone> getByContact(@PathVariable Contact contact) {
+//        return service.getByContact(contact);
+//    }
     @GetMapping("/api/phones/{category}")
     public List<Phone> getByCategory(@PathVariable String category) {
         return service.getByCategory(category);

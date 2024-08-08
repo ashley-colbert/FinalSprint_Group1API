@@ -1,19 +1,21 @@
-package com.keyin.classes.agency;
+package com.keyin.agency;
 
-import com.keyin.classes.contact.Contact;
-import com.keyin.classes.location.Location;
-import com.keyin.classes.rental.Rental;
-import com.keyin.classes.vehicle.Vehicle;
+import com.keyin.contact.Contact;
+import com.keyin.location.Location;
+import com.keyin.rental.Rental;
+import com.keyin.vehicle.Vehicle;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "agencies")
 public class Agency {
     @Id
     @SequenceGenerator(name = "agency_sequence", sequenceName = "agency_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "agency_sequence")
+    private long pk;
     private String name;
     private String website;
     @OneToMany
@@ -25,6 +27,8 @@ public class Agency {
     @Nullable
     @OneToMany
     private List<Rental> rentals;
+    boolean active;
+
     public Agency(
             String name,
             String website,
@@ -41,6 +45,21 @@ public class Agency {
     }
     public Agency() {
         super();
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public long getPk() {
+        return pk;
+    }
+    public void setPk(long pk) {
+        this.pk = pk;
     }
     public String getName() {
         return name;

@@ -1,17 +1,20 @@
-package com.keyin.classes.email;
+package com.keyin.email;
 
-import com.keyin.classes.contact.Contact;
+import com.keyin.contact.Contact;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "emails")
 public class Email {
     @Id
     @SequenceGenerator(name = "email_sequence", sequenceName = "email_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "email_sequence")
+    private long pk;
     private String address;
     @ManyToOne
     private Contact contact;
     private String category;
+    private boolean active;
     public Email(
             String address,
             Contact contact,
@@ -25,6 +28,23 @@ public class Email {
     public Email() {
         super();
     }
+
+    public long getPk() {
+        return pk;
+    }
+
+    public void setPk(long pk) {
+        this.pk = pk;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public String getAddress() {
         return address;
     }
