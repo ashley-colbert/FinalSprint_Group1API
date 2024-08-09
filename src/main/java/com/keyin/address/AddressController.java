@@ -146,12 +146,4 @@ public final class AddressController {
     public Address deleteContacts(@PathVariable long pk) {
         return service.deleteContacts(pk);
     }
-//    @GetMapping("/api/address/{pk}/activate")
-//    public Address activate(@PathVariable long pk) {
-//        return service.activate(pk);
-//    }
-//    @GetMapping("/api/address/{pk}/deactivate")
-//    public Address deactivate(@PathVariable long pk) {
-//        return service.deactivate(pk);
-//    }
 }

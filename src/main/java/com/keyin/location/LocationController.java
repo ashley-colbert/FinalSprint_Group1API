@@ -2,8 +2,6 @@ package com.keyin.location;
 import com.keyin.address.Address;
 import com.keyin.agency.Agency;
 import com.keyin.phone.Phone;
-import com.keyin.rental.Rental;
-import com.keyin.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -36,14 +34,7 @@ public final class LocationController {
     public Location getByPhone(@PathVariable Phone phone) {
         return service.getByPhone(phone);
     }
-//    @GetMapping("/api/locations/{vehicle}")
-//    public Location getByVehicle(@PathVariable Vehicle vehicle) {
-//        return service.getByVehicle(vehicle);
-//    }
-//    @GetMapping("/api/locations/{rental}")
-//    public List<Location> getByRental(@PathVariable Rental rental) {
-//        return service.getByRental(rental);
-//    }
+
     @PostMapping("/api/locations")
     public Location add(@RequestBody Location location) {
         return service.add(location);
@@ -76,12 +67,4 @@ public final class LocationController {
     ) {
         return service.editHours(pk, hours);
     }
-//    @GetMapping("/api/locations/{pk}/activate")
-//    public Location activate(@PathVariable long pk) {
-//        return service.activate(pk);
-//    }
-//    @GetMapping("/api/locationss/{pk}/deactivate")
-//    public Location deactivate(@PathVariable long pk) {
-//        return service.deactivate(pk);
-//    }
 }

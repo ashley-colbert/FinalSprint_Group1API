@@ -1,4 +1,5 @@
 package com.keyin.rental;
+
 import com.keyin.agency.Agency;
 import com.keyin.contact.Contact;
 import com.keyin.location.Location;

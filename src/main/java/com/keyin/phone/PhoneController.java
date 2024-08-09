@@ -26,10 +26,6 @@ public final class PhoneController {
     public Phone getByNumber(@PathVariable String number) {
         return service.getByNumber(number);
     }
-//    @GetMapping("/api/phones/{contact}")
-//    public List<Phone> getByContact(@PathVariable Contact contact) {
-//        return service.getByContact(contact);
-//    }
     @GetMapping("/api/phones/{category}")
     public List<Phone> getByCategory(@PathVariable String category) {
         return service.getByCategory(category);
@@ -121,12 +117,4 @@ public final class PhoneController {
     public Phone deleteContacts(@PathVariable long pk) {
         return service.deleteContacts(pk);
     }
-//    @GetMapping("/api/phones/{pk}/activate")
-//    public Phone activate(@PathVariable long pk) {
-//        return service.activate(pk);
-//    }
-//    @GetMapping("/api/phone/{pk}/deactivate")
-//    public Phone deactivate(@PathVariable long pk) {
-//        return service.deactivate(pk);
-//    }
 }

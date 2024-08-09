@@ -52,16 +52,6 @@ public final class PhoneService {
     }
 
     /**
-     * @name getByContact
-     * @desc Get all phone numbers associated with a contact
-     * @route GET /api/phones/{contact}
-     * @access private
-     */
-//    public List<Phone> getByContact(Contact contact) {
-//        return repo.findAllByContact(contact);
-//    }
-
-    /**
      * @name getByCategory
      * @desc Get all personal or work phone numbers
      * @route GET /api/phones/{category}
@@ -265,27 +255,4 @@ public final class PhoneService {
         current.getContacts().clear();
         return repo.save(current);
     }
-//    /**
-//     * @name activate
-//     * @desc Activate a phone number
-//     * @route GET /api/phones/{pk}/activate
-//     * @access private
-//     */
-//    public Phone activate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(true);
-//        return repo.save(current);
-//    }
-//
-//    /**
-//     * @name deactivate
-//     * @desc Deactivate a phone number
-//     * @route GET /api/phones/{pk}/deactivate
-//     * @access private
-//     */
-//    public Phone deactivate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(false);
-//        return repo.save(current);
-//    }
 }

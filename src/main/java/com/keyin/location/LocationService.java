@@ -3,8 +3,6 @@ package com.keyin.location;
 import com.keyin.address.Address;
 import com.keyin.agency.Agency;
 import com.keyin.phone.Phone;
-import com.keyin.rental.Rental;
-import com.keyin.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,24 +64,7 @@ public final class LocationService {
     public Location getByPhone(Phone phone) {
         return repo.findByPhone(phone);
     }
-    /**
-     * @name    getByVehicle
-     * @desc    Get the location of the current vehicle
-     * @route   GET /api/locations/{vehicle}
-     * @access  private
-     */
-//    public Location getByVehicle(Vehicle vehicle) {
-//        return repo.findByVehicle(vehicle);
-//    }
-    /**
-     * @name    getByRental
-     * @desc    Get the location that a vehicle was rented from
-     * @route   GET /api/locations/{rental}
-     * @access  private
-     */
-//    public List<Location> getByRental(Rental rental) {
-//        return repo.findAllByRental(rental);
-//    }
+
     /**
      * @name    getByHours
      * @desc    Get all locations with the given hours
@@ -176,26 +157,4 @@ public final class LocationService {
         current.setHours(hours);
         return repo.save(current);
     }
-//    /**
-//     * @name    activate
-//     * @desc    Activate an location
-//     * @route   GET /api/locations/{pk}/activate
-//     * @access  private
-//     */
-//    public Location activate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(true);
-//        return repo.save(current);
-//    }
-//    /**
-//     * @name    deactivate
-//     * @desc    Deactivate an agency
-//     * @route   GET /api/agencies/{pk}/deactivate
-//     * @access  private
-//     */
-//    public Location deactivate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(false);
-//        return repo.save(current);
-//    }
 }

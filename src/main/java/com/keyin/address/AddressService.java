@@ -83,15 +83,7 @@ public final class AddressService {
     public List<Address> getByCategory(String category) {
         return repo.findAllByCategory(category);
     }
-    /**
-     * @name    getByContact
-     * @desc    Get all addresses associated with the given contact
-     * @route   GET /api/addresses/{contact}
-     * @access  private
-     */
-//    public List<Address> getByContact(Contact contact) {
-//        return repo.findAllByContact(contact);
-//    }
+
     /**
      * @name    getByLocation
      * @desc    Get the address of an agency location
@@ -291,26 +283,4 @@ public final class AddressService {
         current.getContacts().clear();
         return repo.save(current);
     }
-//    /**
-//     * @name    activate
-//     * @desc    Activate an address
-//     * @route   GET /api/addresses/{pk}/activate
-//     * @access  private
-//     */
-//    public Address activate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(true);
-//        return repo.save(current);
-//    }
-//    /**
-//     * @name    deactivate
-//     * @desc    Deactivate an address
-//     * @route   GET /api/addresses/{pk}/deactivate
-//     * @access  private
-//     */
-//    public Address deactivate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(false);
-//        return repo.save(current);
-//    }
 }

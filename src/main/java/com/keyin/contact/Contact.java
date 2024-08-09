@@ -1,12 +1,11 @@
 package com.keyin.contact;
+
 import com.keyin.address.Address;
 import com.keyin.phone.Phone;
 import com.keyin.rental.Rental;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-
 import java.util.List;
-
 
 @Entity
 @Table(name = "contacts")
@@ -20,6 +19,7 @@ public class Contact {
     private String last;
     private String role;
     @Nullable
+    @Column(unique = true)
     private String email;
 
     @ManyToMany
@@ -27,9 +27,6 @@ public class Contact {
 
     @ManyToMany
     private List<Phone> phones;
-
-//    @OneToMany
-//    private List<Email> emails;
 
     @Nullable
     @OneToMany

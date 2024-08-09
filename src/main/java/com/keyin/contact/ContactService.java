@@ -1,8 +1,6 @@
 package com.keyin.contact;
 import com.keyin.address.Address;
-//import com.keyin.email.Email;
 import com.keyin.phone.Phone;
-import com.keyin.rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
