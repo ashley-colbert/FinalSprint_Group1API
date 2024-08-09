@@ -1,16 +1,17 @@
 package com.keyin.contact;
 
 import com.keyin.address.Address;
-import com.keyin.email.Email;
+//import com.keyin.email.Email;
 import com.keyin.phone.Phone;
 import com.keyin.rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/contacts")
 @CrossOrigin
 public final class ContactController {
     @Autowired
@@ -38,6 +39,10 @@ public final class ContactController {
     public List<Contact> getByRole(@PathVariable String role) {
         return service.getByRole(role);
     }
+    @GetMapping("api/contacts/{email}")
+    public Contact getByEmail(@PathVariable String email) {
+        return service.getByEmail(email);
+    }
     //    @GetMapping("/api/contacts/{address}")
 //    public List<Contact> getByAddress(@PathVariable Address address) {
 //        return service.getByAddress(address);
@@ -63,8 +68,15 @@ public final class ContactController {
         return service.getInactive();
     }
     @PostMapping("/api/contacts")
-    public Contact add(@RequestBody Contact contact) {
-        return service.add(contact);
+    public ResponseEntity<Contact> add(@RequestBody Contact contact) {
+        Contact savedContact = service.add(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedContact);
+    }
+    @DeleteMapping("/api/contacts/{pk}")
+    public ResponseEntity<Void> delete(
+            @PathVariable long pk
+    ) {
+        return ResponseEntity.noContent().build();
     }
     @PatchMapping("/api/contacts/{pk}/first")
     public Contact editFirst(

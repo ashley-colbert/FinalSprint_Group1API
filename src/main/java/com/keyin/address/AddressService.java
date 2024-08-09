@@ -128,6 +128,17 @@ public final class AddressService {
     public Address add(Address newAddress) {
         return repo.save(newAddress);
     }
+
+    /**
+     * @name delete
+     * @desc Delete a contact
+     * @route DELETE /contacts
+     * @access private
+     */
+    public void delete(Address address) {
+        repo.delete(address);
+        System.out.println("Deleted Address ID: " + address.getPk());
+    }
     /**
      * @name    editStreet
      * @desc    Edit an address's street

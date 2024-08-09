@@ -2,6 +2,7 @@ package com.keyin.phone;
 import com.keyin.contact.Contact;
 import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -48,6 +49,12 @@ public final class PhoneController {
     @PostMapping("/api/phones")
     public Phone add(@RequestBody Phone number) {
         return service.add(number);
+    }
+    @DeleteMapping("/api/phones/{pk}")
+    public ResponseEntity<Void> delete(
+            @PathVariable long pk
+    ) {
+        return ResponseEntity.noContent().build();
     }
     @PatchMapping("/api/phones/{pk}/number")
     public Phone editNumber(

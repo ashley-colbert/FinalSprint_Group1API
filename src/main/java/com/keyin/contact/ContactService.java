@@ -1,7 +1,6 @@
-
 package com.keyin.contact;
 import com.keyin.address.Address;
-import com.keyin.email.Email;
+//import com.keyin.email.Email;
 import com.keyin.phone.Phone;
 import com.keyin.rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +68,16 @@ public final class ContactService {
     }
 
     /**
+     * @name getByEmail
+     * @desc Get contacts by email
+     * @route GET /contacts/role/{email}
+     * @access private
+     */
+    public Contact getByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+
+    /**
      * @name getActive
      * @desc Get all active contacts
      * @route GET /contacts/active
@@ -95,7 +104,20 @@ public final class ContactService {
      * @access private
      */
     public Contact add(Contact contact) {
-        return repo.save(contact);
+        Contact savedContact = repo.save(contact);
+        System.out.println("Saved Contact ID: " + savedContact.getPk()); // Log the pk
+        return savedContact;
+    }
+
+    /**
+     * @name delete
+     * @desc Delete a contact
+     * @route DELETE /contacts
+     * @access private
+     */
+    public void delete(Contact contact) {
+        repo.delete(contact);
+        System.out.println("Deleted Contact ID: " + contact.getPk());
     }
 
     /**

@@ -112,6 +112,16 @@ public final class PhoneService {
     }
 
     /**
+     * @name delete
+     * @desc Delete a phone object
+     * @route DELETE /phones
+     * @access private
+     */
+    public void delete(Phone phone) {
+        repo.delete(phone);
+        System.out.println("Deleted Phone ID: " + phone.getPk());
+    }
+    /**
      * @name editNumber
      * @desc Edit a phone number
      * @route PATCH /api/phones/{pk}/number

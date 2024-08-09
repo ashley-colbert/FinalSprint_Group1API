@@ -1,6 +1,5 @@
 package com.keyin.contact;
 import com.keyin.address.Address;
-import com.keyin.email.Email;
 import com.keyin.phone.Phone;
 import com.keyin.rental.Rental;
 import jakarta.annotation.Nullable;
@@ -15,11 +14,13 @@ public class Contact {
 
     @Id
     @SequenceGenerator(name = "contact_sequence", sequenceName = "contact_sequence", allocationSize = 1, initialValue=1)
-    @GeneratedValue(generator = "contact_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_sequence")
     private long pk;
     private String first;
     private String last;
     private String role;
+    @Nullable
+    private String email;
 
     @ManyToMany
     private List<Address> addresses;
@@ -27,8 +28,8 @@ public class Contact {
     @ManyToMany
     private List<Phone> phones;
 
-    @OneToMany
-    private List<Email> emails;
+//    @OneToMany
+//    private List<Email> emails;
 
     @Nullable
     @OneToMany
@@ -36,20 +37,23 @@ public class Contact {
     private boolean active;
 
     public Contact(
+            long pk,
             String first,
             String last,
             String role,
+            String email,
             List<Address> addresses,
-            List<Phone> phones,
-            List<Email> emails
+            List<Phone> phones
+//            List<Email> emails
     ) {
         super();
+        this.pk = 0;
         this.first = first;
         this.last = last;
         this.role = role;
+        this.email = email;
         this.addresses = addresses;
         this.phones = phones;
-        this.emails = emails;
     }
 
     public long getPk() {
@@ -101,16 +105,18 @@ public class Contact {
     public void setPhones(List<Phone> phones) {
         this.phones = phones;
     }
-    public List<Email> getEmails() {
-        return emails;
-    }
-    public void setEmails(List<Email> emails) {
-        this.emails = emails;
-    }
     public List<Rental> getRentals() {
         return rentals;
     }
     public void setRentals(List<Rental> rentals) {
         this.rentals = rentals;
+    }
+
+    @Nullable
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(@Nullable String email) {
+        this.email = email;
     }
 }
