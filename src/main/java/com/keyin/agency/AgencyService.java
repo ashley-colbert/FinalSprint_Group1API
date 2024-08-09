@@ -1,9 +1,5 @@
 package com.keyin.agency;
 
-import com.keyin.contact.Contact;
-import com.keyin.location.Location;
-import com.keyin.rental.Rental;
-import com.keyin.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,42 +52,7 @@ public final class AgencyService {
     public Agency getByWebsite(String website) {
         return repo.findByWebsite(website);
     }
-    /**
-     * @name    getByLocation
-     * @desc    Get the agency that owns the given location
-     * @route   GET /api/agencies/{location}
-     * @access  private
-     */
-//    public Agency getByLocation(Location location) {
-//        return repo.findByLocation(location);
-//    }
-    /**
-     * @name    getByContact
-     * @desc    Get the agency that employs the given contact
-     * @route   GET /api/agencies/{contact}
-     * @access  private
-     */
-//    public Agency getByContact(Contact contact) {
-//        return repo.findByContact(contact);
-//    }
-    /**
-     * @name    getByVehicle
-     * @desc    Get the agency that owns the given vehicle
-     * @route   GET /api/agencies/{vehicle}
-     * @access  private
-     */
-//    public Agency getByVehicle(Vehicle vehicle) {
-//        return repo.findByVehicle(vehicle);
-//    }
-    /**
-     * @name    getByRental
-     * @desc    Get the agency that the given vehicle was rented from
-     * @route   GET /api/agencies/{rental}
-     * @access  private
-     */
-//    public Agency getByRental(Rental rental) {
-//        return repo.findByRental(rental);
-//    }
+
     /**
      * @name    getActive
      * @desc    Get all active agencies
@@ -147,26 +108,4 @@ public final class AgencyService {
         current.setWebsite(website);
         return repo.save(current);
     }
-//    /**
-//     * @name    activate
-//     * @desc    Activate an agency
-//     * @route   GET /api/agencies/{pk}/activate
-//     * @access  private
-//     */
-//    public Agency activate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(true);
-//        return repo.save(current);
-//    }
-//    /**
-//     * @name    deactivate
-//     * @desc    Deactivate an agency
-//     * @route   GET /api/agencies/{pk}/deactivate
-//     * @access  private
-//     */
-//    public Agency deactivate(long pk) {
-//        this.current = repo.findById(pk).get();
-//        current.setActive(false);
-//        return repo.save(current);
-//    }
 }

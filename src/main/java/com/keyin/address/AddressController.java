@@ -3,6 +3,7 @@ package com.keyin.address;
 import com.keyin.contact.Contact;
 import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,7 +65,12 @@ public final class AddressController {
     public Address add(@RequestBody Address newAddress) {
         return service.add(newAddress);
     }
-
+    @DeleteMapping("/api/addresses/{pk}")
+    public ResponseEntity<Void> delete(
+            @PathVariable long pk
+    ) {
+        return ResponseEntity.noContent().build();
+    }
     @PatchMapping("/api/address/{pk}/street")
     public Address editStreet(
             @PathVariable long pk,
@@ -140,12 +146,4 @@ public final class AddressController {
     public Address deleteContacts(@PathVariable long pk) {
         return service.deleteContacts(pk);
     }
-//    @GetMapping("/api/address/{pk}/activate")
-//    public Address activate(@PathVariable long pk) {
-//        return service.activate(pk);
-//    }
-//    @GetMapping("/api/address/{pk}/deactivate")
-//    public Address deactivate(@PathVariable long pk) {
-//        return service.deactivate(pk);
-//    }
 }

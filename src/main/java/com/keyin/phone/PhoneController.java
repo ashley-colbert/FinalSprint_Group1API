@@ -2,6 +2,7 @@ package com.keyin.phone;
 import com.keyin.contact.Contact;
 import com.keyin.location.Location;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -25,10 +26,6 @@ public final class PhoneController {
     public Phone getByNumber(@PathVariable String number) {
         return service.getByNumber(number);
     }
-//    @GetMapping("/api/phones/{contact}")
-//    public List<Phone> getByContact(@PathVariable Contact contact) {
-//        return service.getByContact(contact);
-//    }
     @GetMapping("/api/phones/{category}")
     public List<Phone> getByCategory(@PathVariable String category) {
         return service.getByCategory(category);
@@ -48,6 +45,12 @@ public final class PhoneController {
     @PostMapping("/api/phones")
     public Phone add(@RequestBody Phone number) {
         return service.add(number);
+    }
+    @DeleteMapping("/api/phones/{pk}")
+    public ResponseEntity<Void> delete(
+            @PathVariable long pk
+    ) {
+        return ResponseEntity.noContent().build();
     }
     @PatchMapping("/api/phones/{pk}/number")
     public Phone editNumber(
@@ -114,12 +117,4 @@ public final class PhoneController {
     public Phone deleteContacts(@PathVariable long pk) {
         return service.deleteContacts(pk);
     }
-//    @GetMapping("/api/phones/{pk}/activate")
-//    public Phone activate(@PathVariable long pk) {
-//        return service.activate(pk);
-//    }
-//    @GetMapping("/api/phone/{pk}/deactivate")
-//    public Phone deactivate(@PathVariable long pk) {
-//        return service.deactivate(pk);
-//    }
 }

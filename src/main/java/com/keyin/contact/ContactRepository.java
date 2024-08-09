@@ -10,4 +10,5 @@ public interface ContactRepository extends CrudRepository<Contact, Long> {
     List<Contact> findAllByLast(String last);
     List<Contact> findAllByRole(String role);
     List<Contact> findAllByActive(boolean active);
+    Contact findByEmail(String email);
 }
