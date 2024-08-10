@@ -1,4 +1,5 @@
 package com.keyin.phone;
+
 import com.keyin.contact.Contact;
 import com.keyin.location.Location;
 import jakarta.annotation.Nullable;
@@ -61,7 +62,6 @@ public class Phone {
     public void setActive(boolean active) {
         this.active = active;
     }
-
     public String getNumber() {
         return number;
     }

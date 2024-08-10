@@ -1,16 +1,17 @@
 package com.keyin.contact;
 
 import com.keyin.address.Address;
-import com.keyin.email.Email;
+//import com.keyin.email.Email;
 import com.keyin.phone.Phone;
 import com.keyin.rental.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/contacts")
 @CrossOrigin
 public final class ContactController {
     @Autowired
@@ -38,22 +39,11 @@ public final class ContactController {
     public List<Contact> getByRole(@PathVariable String role) {
         return service.getByRole(role);
     }
-    //    @GetMapping("/api/contacts/{address}")
-//    public List<Contact> getByAddress(@PathVariable Address address) {
-//        return service.getByAddress(address);
-//    }
-//    @GetMapping("/api/contacts/{phone}")
-//    public List<Contact> getByPhone(@PathVariable Phone phone) {
-//        return service.getByPhone(phone);
-//    }
-//    @GetMapping("/api/contacts/{email}")
-//    public Contact getByEmail(@PathVariable Email email) {
-//        return service.getByEmail(email);
-//    }
-//    @GetMapping("/api/contacts/{rental}")
-//    public Contact getByRental(@PathVariable Rental rental) {
-//        return service.getByRental(rental);
-//    }
+    @GetMapping("api/contacts:email")
+    public Contact getByEmail(@PathVariable String email) {
+        return service.getByEmail(email);
+    }
+
     @GetMapping("/api/contacts/{active}")
     public List<Contact> getActive() {
         return service.getActive();
@@ -63,8 +53,15 @@ public final class ContactController {
         return service.getInactive();
     }
     @PostMapping("/api/contacts")
-    public Contact add(@RequestBody Contact contact) {
-        return service.add(contact);
+    public ResponseEntity<Contact> add(@RequestBody Contact contact) {
+        Contact savedContact = service.add(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedContact);
+    }
+    @DeleteMapping("/api/contacts/{pk}")
+    public ResponseEntity<Void> delete(
+            @PathVariable long pk
+    ) {
+        return ResponseEntity.noContent().build();
     }
     @PatchMapping("/api/contacts/{pk}/first")
     public Contact editFirst(
@@ -134,13 +131,7 @@ public final class ContactController {
     ) {
         return service.addPhone(pk, phone);
     }
-    //    @PostMapping("/api/contacts/{pk}")
-//    public Contact addPhones(
-//            @PathVariable long pk,
-//            @RequestBody List<Phone> phones
-//    ) {
-//        return service.addPhones(pk, phones);
-//    }
+
     @PatchMapping("/api/contacts/{pk}/phones/{index}")
     public Contact replacePhone(
             @PathVariable long pk,
@@ -168,12 +159,5 @@ public final class ContactController {
     public Contact deletePhones(@PathVariable long pk) {
         return service.deletePhones(pk);
     }
-//    @GetMapping("/api/contact/{pk}/activate")
-//    public Contact activate(@PathVariable long pk) {
-//        return service.activate(pk);
-//    }
-//    @GetMapping("/api/contact/{pk}/deactivate")
-//    public Contact deactivate(@PathVariable long pk) {
-//        return service.deactivate(pk);
-//    }
+
 }

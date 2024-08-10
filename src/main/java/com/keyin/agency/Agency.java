@@ -6,7 +6,6 @@ import com.keyin.rental.Rental;
 import com.keyin.vehicle.Vehicle;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
